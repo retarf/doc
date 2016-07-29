@@ -1,0 +1,35 @@
+{% load staticfiles %}
+<html>
+<head>
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/doc.css' %}">
+
+
+</head>
+<body>
+<div class = "tab">
+	<div id="doc">
+		<h1> Lista dokumentów: </h1>
+
+		<ol>
+
+			{% for doc in all_doc %}
+				<li> {{ doc }} </li>
+			{% endfor %}
+	
+		</ol>
+
+	</div>
+	<div id="cli">
+		<h1> Lista klientów </h1>
+
+		<ol>
+
+			{% for client in all_clients %}
+				<li> {{ client }} <strong> MIASTO: </strong> {{ client.city }} </li>
+			{% endfor %}
+	
+		</ol>
+	</div>
+</div>
+</body>
