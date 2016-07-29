@@ -22,3 +22,4 @@ class Song(models.Model):
 		return self.song_title
 
 #Dodanie gita 29.07.2016 Jedlina Zdroj
+#Dodanie nowego komentarza
