@@ -60,6 +60,7 @@ class Doc(models.Model):
 
         number = IntegerField(default=getNumber(Doc.objects.order_by('number').first().number)
 
+# pod ta linia wyskakuje blad
         def __str__(self):
 		if self.number < 10:
 			return self.doctype + " / " + "00" + str(self.number)
