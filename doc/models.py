@@ -52,16 +52,15 @@ class Doc(models.Model):
 
 	number = IntegerField()
 
-        date = DateField(default=date.today)
+	date = DateField(default=date.today)
 	
 	def getNumber(last_doc):
 	    doc = last_doc + 1
 	    return doc
 
-        number = IntegerField(default=getNumber(Doc.objects.order_by('number').first().number)
+	number = IntegerField(default=getNumber(Doc.objects.order_by('number').first().number)
 
-# pod ta linia wyskakuje blad
-        def __str__(self):
+	def __str__(self):
 		if self.number < 10:
 			return self.doctype + " / " + "00" + str(self.number)
 		elif self.number < 100:
