@@ -2,11 +2,13 @@ from __future__ import unicode_literals
 
 from django.db import models
 
-from django.db.models import CharField, IntegerField, BooleanField, ForeignKey, FloatField
+from django.db.models import CharField, IntegerField, BooleanField, ForeignKey, FloatField, DateField
+
+from datetime import date
 
 # Create your models here.
 
-class Clients(models.Model):
+class Client(models.Model):
 	code = CharField(max_length=50)
 	name = CharField(max_length=100)
 	nip = CharField(max_length=10)
@@ -18,7 +20,7 @@ class Clients(models.Model):
 	def __str__(self):
 		return "  " + self.code + " " + self.name + " " + self.nip + " " + self.zip_number + " " + self.city + " " + self.street + " " + str(self.number)
 
-class ProductList(models.Model):
+class Product(models.Model):
 	itswine = BooleanField(default=True)
 	name = CharField(max_length=50)
 	year = CharField(max_length=4)
@@ -28,7 +30,7 @@ class ProductList(models.Model):
 	def __str__(self):
 		return self.name + " " + self.year + " " + self.color + " " + self.dryness
 
-class DocList(models.Model):
+class Doc(models.Model):
 
 	WZ = 'WZ'
 	PZ = 'PZ'
@@ -50,11 +52,15 @@ class DocList(models.Model):
 
 	number = IntegerField()
 
+        date = DateField(default=date.today)
 	
-	def getNumber(self):
-		return DocList.objects.order_by('number').first().number + 1
-	
-	def __str__(self):
+	def getNumber(last_doc):
+	    doc = last_doc + 1
+	    return doc
+
+        number = IntegerField(default=getNumber(Doc.objects.order_by('number').first().number)
+
+        def __str__(self):
 		if self.number < 10:
 			return self.doctype + " / " + "00" + str(self.number)
 		elif self.number < 100:
@@ -64,8 +70,8 @@ class DocList(models.Model):
 '''
 
 class income(models.Model):
-	number = ForeignKey(DocList, on_delete=models.CASCADE)
-	name = ForeignKey(ProductList, on_delete=models.CASCADE)
+	number = ForeignKey(Doc, on_delete=models.CASCADE)
+	name = ForeignKey(Product, on_delete=models.CASCADE)
 	quantity = IntegerField()
 	price = FloatField()
 	value = FloatField()
@@ -76,7 +82,7 @@ class income(models.Model):
 	value = valueCalculation(price, float(quantity))
 
 class expenditure(models.Model):
-	number = ForeignKey(DocList, on_delete=models.CASCADE)
+	number = ForeignKey(Doc, on_delete=models.CASCADE)
 	name = ForeignKey(ProductList, on_delete=models.CASCADE)
 	quantity = IntegerField()
 	price = FloatField()
