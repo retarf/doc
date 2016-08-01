@@ -1,12 +1,7 @@
-{% load staticfiles %}
-<html>
-<head>
-	<link href='https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="{% static 'css/doc.css' %}">
+{% extends 'doc/base.html' %}
 
 
-</head>
-<body>
+{% block body %}
 <div class = "tab">
 	<div id="doc">
 		<h1> Lista dokumentów: </h1>
@@ -32,4 +27,6 @@
 		</ol>
 	</div>
 </div>
-</body>
+
+{% endblock %}
+

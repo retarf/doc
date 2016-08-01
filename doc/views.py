@@ -11,4 +11,7 @@ def lists(request):
 		'all_clients' : all_clients,
 		})
 
+def detail(request, doc_id):
+	return render(request, "<h1> Szczegoly dla " + doc_id + " <h1>")
+
 
