@@ -9,72 +9,76 @@ from datetime import date
 # Create your models here.
 
 class Client(models.Model):
-	code = CharField(max_length=50)
-	name = CharField(max_length=100)
-	nip = CharField(max_length=10)
-	street = CharField(max_length=100)
-	number = IntegerField()
-	city = CharField(max_length=50)
-	zip_number = CharField(max_length=5)
+    code = CharField(max_length=50)
+    name = CharField(max_length=100)
+    nip = CharField(max_length=10)
+    street = CharField(max_length=100)
+    number = IntegerField()
+    city = CharField(max_length=50)
+    zip_number = CharField(max_length=5)
 
-	def __str__(self):
-		return "  " + self.code + " " + self.name + " " + self.nip + " " + self.zip_number + " " + self.city + " " + self.street + " " + str(self.number)
+    def __str__(self):
+        return "  " + self.code + " " + self.name + " " + self.nip + " " + self.zip_number + " " + self.city + " " + self.street + " " + str(self.number)
 
 class Product(models.Model):
-	itswine = BooleanField(default=True)
-	name = CharField(max_length=50)
-	year = CharField(max_length=4)
-	color = CharField(max_length=15)
-	dryness = CharField(max_length=20)
+    itswine = BooleanField(default=True)
+    name = CharField(max_length=50)
+    year = CharField(max_length=4)
+    color = CharField(max_length=15)
+    dryness = CharField(max_length=20)
 
-	def __str__(self):
-		return self.name + " " + self.year + " " + self.color + " " + self.dryness
+    def __str__(self):
+        return self.name + " " + self.year + " " + self.color + " " + self.dryness
 
 class Doc(models.Model):
 
-	WZ = 'WZ'
-	PZ = 'PZ'
-	RW = 'RW'
-	PW = 'PW'
+    WZ = 'WZ'
+    PZ = 'PZ'
+    RW = 'RW'
+    PW = 'PW'
 
-	DOC_TYPE_CHOICES=(
+    DOC_TYPE_CHOICES=(
         (WZ, 'WZ'),
         (PZ, 'PZ'),
         (RW, 'RW'),
         (PW, 'PW'),
     )
 
-	doctype = models.CharField(
+    doctype = models.CharField(
         max_length=2,
         choices=DOC_TYPE_CHOICES,
         default=WZ,
     )
 
-	number = IntegerField()
+    number = IntegerField()
 
-	date = DateField(default=date.today)
+    date = DateField(default=date.today)
 	
-	def getNumber():
-		doc = Doc.objects.order_by('number').last().number + 1
-		return doc
+    # getNumber function add default number of document.
 
-	number = IntegerField(default=getNumber)
+    def getNumber():
+        doc = Doc.objects.order_by('number').last().number + 1
+        return doc
 
-	def __str__(self):
-		if self.number < 10:
-			return self.doctype + " / " + "00" + str(self.number)
-		elif self.number < 100:
-			return self.doctype + " / " + "0" + str(self.number)
-		else:
-			return " " + self.doctype + " / " + str(self.number)
+    number = IntegerField(default=getNumber)
+
+    client = ForeignKey(Client, on_delete=models.CASCADE)
+
+    def __str__(self):
+        if self.number < 10:
+            return self.doctype + " / " + "00" + str(self.number)
+        elif self.number < 100:
+            return self.doctype + " / " + "0" + str(self.number)
+        else:
+            return " " + self.doctype + " / " + str(self.number)
 '''
 
 class income(models.Model):
-	number = ForeignKey(Doc, on_delete=models.CASCADE)
-	name = ForeignKey(Product, on_delete=models.CASCADE)
-	quantity = IntegerField()
-	price = FloatField()
-	value = FloatField()
+ number = ForeignKey(Doc, on_delete=models.CASCADE)
+ name = ForeignKey(Product, on_delete=models.CASCADE)
+ quantity = IntegerField()
+ price = FloatField()
+ value = FloatField()
 
 	def valueCalculation(p, q):
 		return q*p
