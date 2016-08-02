@@ -54,11 +54,11 @@ class Doc(models.Model):
 
 	date = DateField(default=date.today)
 	
-	def getNumber(last_doc):
-	    doc = last_doc + 1
-	    return doc
+	def getNumber():
+		doc = Doc.objects.order_by('number').last().number + 1
+		return doc
 
-	number = IntegerField(default=getNumber(Doc.objects.order_by('number').first().number)
+	number = IntegerField(default=getNumber)
 
 	def __str__(self):
 		if self.number < 10:
