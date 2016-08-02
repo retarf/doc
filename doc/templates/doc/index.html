@@ -6,13 +6,11 @@
 	<div id="doc">
 		<h1> Lista dokumentów: </h1>
 
-		<ol>
-
+		<ul>
 			{% for doc in all_doc %}
-				<li> {{ doc }} </li>
+				<li><a href="/doc/{{ doc.id }}"> {{ doc.doctype }} / {{ doc.number }} </a><li>
 			{% endfor %}
-	
-		</ol>
+		</ul>
 
 	</div>
 	<div id="cli">

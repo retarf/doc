@@ -3,20 +3,36 @@ body
 	font-family: 'Lato', sans-serif;
 }
 
+ul
+{
+    list-style-type: none;
+}
+
+
 li
 {
 	line-height: 40px;
+    border-bottom: 1px solid;
 }
-
+/*
 
 li:nth-child(odd)
 {
 	background-color: lightgray;
 }
+*/
 
 li:hover
 {
 	background-color: lightgreen;
+}
+
+li > a
+{
+    display: block;
+    text-decoration: none;
+    color: black;
+    text-align: center;
 }
 
 #doc

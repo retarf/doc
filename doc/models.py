@@ -30,6 +30,11 @@ class Product(models.Model):
     def __str__(self):
         return self.name + " " + self.year + " " + self.color + " " + self.dryness
 
+def getNumber():
+    doc = Doc.objects.order_by('number').last().number + 1
+    return doc
+
+
 class Doc(models.Model):
 
     WZ = 'WZ'
@@ -53,16 +58,10 @@ class Doc(models.Model):
     number = IntegerField()
 
     date = DateField(default=date.today)
-	
-    # getNumber function add default number of document.
 
-    def getNumber():
-        doc = Doc.objects.order_by('number').last().number + 1
-        return doc
+    number=IntegerField(default=getNumber)
 
-    number = IntegerField(default=getNumber)
-
-    client = ForeignKey(Client, on_delete=models.CASCADE)
+    client=ForeignKey(Client, on_delete=models.CASCADE)
 
     def __str__(self):
         if self.number < 10:

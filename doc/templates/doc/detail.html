@@ -1,0 +1,18 @@
+{% extends 'doc/base.html' %}
+
+
+{% block body %}
+<div>
+	<h3> Numer dokumentu: {{ doc.doctype }} / {{ num }} </h3>
+	<br>
+	<h3> Data dokumentu: {{ doc.date }} </h3>
+	<br>
+	<br>
+	<h3> <stoong> Klient: </stoong> {{ doc.client }}
+</div>
+<br>
+<br>
+<a href="http://projekty:8000/doc/"> <<< Powrot do strony glownej </a>
+
+{% endblock %}
+
