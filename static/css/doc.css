@@ -51,3 +51,21 @@ li > a
 	margin-left: auto;
 	margin-right: auto;
 }
+
+.back_btn
+{
+    display: block;
+    line-height: 58px;
+    width: 150px;
+    background-color: #9e5f9a;
+    border-radius: 15px;
+    border: solid 2px #855081;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+.back_btn:hover
+{
+    background-color: #855081;
+}

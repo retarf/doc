@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .models import Doc, Client
+from .forms import Adddoc
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Create your views here.
 
@@ -39,3 +41,7 @@ def detail(request, doc_id):
         num = str(num)
 
     return render(request, 'doc/detail.html', {'doc': doc, 'num': num})
+
+class DocCreate(CreateView):
+    model = Doc
+    fields = ['doctype', 'number', 'date', 'client' ]

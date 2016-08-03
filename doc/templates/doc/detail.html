@@ -12,7 +12,9 @@
 </div>
 <br>
 <br>
-<a href="http://projekty:8000/doc/"> <<< Powrot do strony glownej </a>
+<form action="{% url 'index' %}">
+	<input class='back_btn' type="submit" value="POWRÓT">
+</form>
 
 {% endblock %}
 

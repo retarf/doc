@@ -13,17 +13,17 @@
 		</ul>
 
 	</div>
-	<div id="cli">
-		<h1> Lista klientów </h1>
+    <div id="cli">
+        <h1> Lista klientów </h1>
 
-		<ol>
+        <ol>
 
-			{% for client in all_clients %}
-				<li> {{ client }} <strong> MIASTO: </strong> {{ client.city }} </li>
-			{% endfor %}
-	
-		</ol>
-	</div>
+            {% for client in all_clients %}
+                <li> {{ client }} <strong> MIASTO: </strong> {{ client.city }} </li>
+            {% endfor %}
+    
+        </ol>
+    </div>
 </div>
 
 {% endblock %}

@@ -6,6 +6,10 @@ from django.db.models import CharField, IntegerField, BooleanField, ForeignKey, 
 
 from datetime import date
 
+from django.forms import ModelForm
+
+from django.core.urlresolvers import reverse
+
 # Create your models here.
 
 class Client(models.Model):
@@ -63,6 +67,9 @@ class Doc(models.Model):
 
     client=ForeignKey(Client, on_delete=models.CASCADE)
 
+    def get_absolute_url(self):
+        return reverse('doc/detail', kwargs={ 'pk': self.id })
+
     def __str__(self):
         if self.number < 10:
             return self.doctype + " / " + "00" + str(self.number)
@@ -70,6 +77,8 @@ class Doc(models.Model):
             return self.doctype + " / " + "0" + str(self.number)
         else:
             return " " + self.doctype + " / " + str(self.number)
+
+
 '''
 
 class income(models.Model):
