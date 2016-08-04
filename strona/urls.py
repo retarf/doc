@@ -20,4 +20,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^music/', include('music.urls')),
     url(r'^doc/', include('doc.urls')),
+    url(r'^formsy', include('formsy.urls')),
+    
 ]

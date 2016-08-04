@@ -8,6 +8,7 @@
 
     {% csrf_token %}
     {% for field in form %}
+    
         {{ field.error }}
         <label> {{ field.label_tag }} </label>
         <div> {{ field }} </div>
@@ -15,9 +16,20 @@
 
     {% endfor %}
 
-    <button type="submit">Dodaj</button>
+    <button class='btn submit' type="submit">Dodaj</button>
 
 </form>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<form action="{% url 'doc:index' %}">
+    <input class='btn back' type="submit" value="POWRÓT">
+</form>
+
 
 {% endblock %}
 

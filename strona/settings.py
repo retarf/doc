@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'formsy.apps.FormsyConfig',
     'doc.apps.DocConfig',
     'wzki.apps.WzkiConfig',
     'music.apps.MusicConfig',

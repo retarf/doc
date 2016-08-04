@@ -1,9 +1,8 @@
 {% extends 'doc/base.html' %}
 
-
 {% block body %}
 <div>
-	<h3> Numer dokumentu: {{ doc.doctype }} / {{ num }} </h3>
+	<h3> Numer dokumentu: {{ doc.doctype }} / {{ doc.number }} </h3>
 	<br>
 	<h3> Data dokumentu: {{ doc.date }} </h3>
 	<br>
@@ -12,8 +11,8 @@
 </div>
 <br>
 <br>
-<form action="{% url 'index' %}">
-	<input class='back_btn' type="submit" value="POWRÓT">
+<form action="{% url 'doc:index' %}">
+	<input class='btn back' type="submit" value="POWRÓT">
 </form>
 
 {% endblock %}

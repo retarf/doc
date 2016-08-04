@@ -52,7 +52,7 @@ li > a
 	margin-right: auto;
 }
 
-.back_btn
+.btn
 {
     display: block;
     line-height: 58px;
@@ -64,6 +64,18 @@ li > a
     text-decoration: none;
     color: white;
 }
+
+.back
+{
+    background-color: #9e5f9a;
+}
+
+.submit
+{
+    background-color: lightgreen;
+    color: darkgreen;
+}
+
 
 .back_btn:hover
 {
