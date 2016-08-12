@@ -1,0 +1,17 @@
+{% extends 'doc/base.html' %}
+
+
+{% block body %}
+    <div class = "tab">
+	    <div id="doc">
+		    <h1> Lista dokumentów: </h1>
+
+    		<ul>
+	    		{% for doc in reversed(all_doc) %}
+		    		<li><a href="{% url 'doc:DocumentDetail' doc.id %}"> {{ doc.doctype }} / {{ doc.number }} </a><li>
+    			{% endfor %}
+	    	</ul>
+
+    	</div>
+    </div>
+{% endblock %}
