@@ -1,0 +1,23 @@
+{% extends 'doc/base.html' %}
+
+{% block body %}
+<div>
+	<h1> Nazwa produktu: {{ product.name }} </h1>
+	<br>
+	<h2> Kod klienta: {{  }} </h2>
+	<br>
+	<h1> Ulica: {{  }} </h1>
+	<h1> Numer: {{  }} </h1>
+	<h1> Miasto: {{  }} </h1>
+	<h1> Kod miasta: {{  }} </h1>
+	<br>
+	<br>
+</div>
+<br>
+<br>
+<form action="{% url 'doc:products' %}">
+	<button class='btn back' type="submit"> POWRÓT </button>
+</form>
+
+{% endblock %}
+

@@ -21,6 +21,9 @@ class Client(models.Model):
     city = CharField(max_length=50)
     zip_number = CharField(max_length=5)
 
+    def get_absolute_url(self):
+        return reverse('doc:clidetail', kwargs={ 'cli_id': self.id })
+
     def __str__(self):
         return "  " + self.code + " " + self.name + " " + self.nip + " " + self.zip_number + " " + self.city + " " + self.street + " " + str(self.number)
 

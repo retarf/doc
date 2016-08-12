@@ -1,39 +1,100 @@
 body
 {
 	font-family: 'Lato', sans-serif;
+    padding: 0;
+    margin: 0;
 }
 
-ul
+#mainname
+{
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 70px;
+}
+
+.nav
+{
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.menu
+{
+    list-style-type: none;
+    width: 450px;
+    height: 50px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.menu > li
+{
+    display: inline-block;
+    width: 100px;
+    margin: 0;
+    padding: 0;
+
+}
+
+.menu > li > a
+{
+    display: block;
+    text-decoration: none;
+    color: ghostwhite;
+    line-height: 50px;
+    text-align: center;
+}
+
+.menu > li > a:hover
+{
+    background-color: #5b80b2;
+    color: #333333;
+}
+
+.lists
 {
     list-style-type: none;
 }
 
-
-li
+.lists > li
 {
 	line-height: 40px;
-    border-bottom: 1px solid;
+    border-bottom: 1px solid black;
 }
-/*
 
-li:nth-child(odd)
+.lists > li:first-child
 {
-	background-color: lightgray;
+	border-top: 2px solid black;
 }
-*/
 
-li:hover
+table td th
+{
+    border: salmon 1px solid;
+    border-collapse: collapse;
+}
+
+tr
+{
+    width: 100%;
+}
+
+
+.lists > li:hover
 {
 	background-color: lightgreen;
 }
 
-li > a
+.lists > li > a
 {
     display: block;
     text-decoration: none;
     color: black;
     text-align: center;
 }
+
+/*
 
 #doc
 {
@@ -84,3 +145,10 @@ li > a
 {
     background-color: #855081;
 }
+
+.menu > a
+{
+    display: inline-block;
+}
+
+*/

@@ -8,16 +8,37 @@
     <title>Program magazynowy</title>
 
     <link href='https://fonts.googleapis.com/css?family=Lato:400,700&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+
+    <!-- BOOTSTRAP -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <link rel="stylesheet" type="text/css" href="{% static 'css/doc.css' %}">
 
 </head>
 <body>
 
-<a href="#" > Tu bedzie menu </a>
+<h1 id="mainname"><strong> PROGRAM MAGAZYNOWY </strong> </h1>
 
 <br>
 <br>
-<a class='btn submit' href="{% url 'doc:doc-add' %}" > Adddoc </a>
+<div class="nav">
+	<!-- <a class='btn submit' href="{% url 'doc:doc-add' %}" > Add doc </a>
+	<a class='btn submit' href="#" > Add cli </a> -->
+
+    <ol class="menu">
+        <li><a class="manu_btn" href="{% url 'doc:documents' %}">Dokumenty</a></li>
+        <li><a class="manu_btn" href="{% url 'doc:products' %}">Produkty</a></li>
+        <li><a class="manu_btn" href="{% url 'doc:clients' %}">Klienci</a></li>
+        <li><a class="manu_btn" href="#">Raporty</a></li>
+    </ol>
+
+</div>
 
 {% block body %}
 

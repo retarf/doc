@@ -6,12 +6,12 @@
     <div id="cli">
         <h1> Lista klientów </h1>
 
-        <ul>
+        <ul class="lists">
 
             {% for client in all_clients %}
 				<li><a href="{% url 'doc:ClientDetail' client.id %}"> {{ client }} </a><li>
             {% endfor %}
-    
+
         </ul>
     </div>
 </div>

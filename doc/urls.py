@@ -6,9 +6,19 @@ app_name = 'doc'
 urlpatterns = [
     url(r'^$', views.index, name = 'index'),
 
+    ### Documents section ###
     # /doc/71/
-    url(r'^(?P<doc_id>[0-9]+)/$', views.detail, name = 'detail'),
-
+    url(r'^doc/(?P<doc_id>[0-9]+)/$', views.DocumentDetail, name = 'DocumentDetail'),
+    url(r'^doc/$', views.documents, name = 'documents'),
     # add_doc
-    url(r'^add/$', views.DocCreate.as_view(), name = 'doc-add'),
+    url(r'^doc/add/$', views.DocCreate.as_view(), name = 'doc-add'),
+
+    ### Clients section ###
+    url(r'^client/$', views.clients, name = 'clients'),
+    url(r'^client/(?P<cli_id>[0-9]+)/$', views.ClientDetail, name = 'ClientDetail'),
+
+    ### Products section ###
+
+    url(r'^products/$', views.products, name='products'),
+url(r'^products/(?P<product_id>[0-9]+)/$', views.productDetail, name = 'productDetail'),
 ]

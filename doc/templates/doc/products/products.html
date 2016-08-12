@@ -1,0 +1,19 @@
+{% extends 'doc/base.html' %}
+
+
+{% block body %}
+<div class = "tab">
+    <div id="cli">
+        <h1> Lista produktów </h1>
+
+        <ul class="lists">
+
+            {% for product in all_products %}
+				<li><a href="{% url 'doc:productDetail' product.id %}"> {{ product }} </a><li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
+
+{% endblock %}

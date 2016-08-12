@@ -1,0 +1,24 @@
+{% extends 'doc/base.html' %}
+
+{% block body %}
+<div>
+	<h1> Nazwa klienta: {{ client.name }} </h1>
+	<br>
+	<h2> Kod klienta: {{ client.code }} </h2>
+	<br>
+	<h1> Ulica: {{ client.street }} </h1>
+	<h1> Numer: {{ client.number }} </h1>
+	<h1> Miasto: {{ client.city }} </h1>
+	<h1> Kod miasta: {{ client.zip_number }} </h1>
+	<br>
+	<br>
+	<h3> <stoong> Klient: </stoong> {{ doc.client }}
+</div>
+<br>
+<br>
+<form action="{% url 'doc:clients' %}">
+	<button class='btn back' type="submit"> POWRÓT </button>
+</form>
+
+{% endblock %}
+

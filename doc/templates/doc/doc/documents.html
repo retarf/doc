@@ -6,9 +6,9 @@
 	    <div id="doc">
 		    <h1> Lista dokumentów: </h1>
 
-    		<ul>
-	    		{% for doc in reversed(all_doc) %}
-		    		<li><a href="{% url 'doc:DocumentDetail' doc.id %}"> {{ doc.doctype }} / {{ doc.number }} </a><li>
+    		<ul class="lists">
+	    		{% for doc in all_doc.reverse %}
+		    		<li><a href="{% url 'doc:DocumentDetail' doc.id %}"> {{ doc.doctype }} / {{ doc.number }} <br> {{ doc.client }} <br> {{ doc.date }}</a><li>
     			{% endfor %}
 	    	</ul>
 
