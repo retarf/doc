@@ -81,20 +81,17 @@ class Doc(models.Model):
         else:
             return " " + self.doctype + " / " + str(self.number)
 
+def valueCalc(p, q):
+    return q*p
 
-'''
 
 class income(models.Model):
- number = ForeignKey(Doc, on_delete=models.CASCADE)
- name = ForeignKey(Product, on_delete=models.CASCADE)
- quantity = IntegerField()
- price = FloatField()
- value = FloatField()
-
-	def valueCalculation(p, q):
-		return q*p
-
-	value = valueCalculation(price, float(quantity))
+    number = ForeignKey(Doc, on_delete=models.CASCADE)
+    name = ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = FloatField()
+    price = FloatField()
+    value = FloatField()
+    value = valueCalc(price, quantity)
 
 class expenditure(models.Model):
 	number = ForeignKey(Doc, on_delete=models.CASCADE)
@@ -107,4 +104,3 @@ class expenditure(models.Model):
 		return q*p
 
 	value = valueCalculation(price, quantity)
-'''
