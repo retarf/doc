@@ -2,16 +2,37 @@
 
 
 {% block body %}
-    <div class = "tab">
-	    <div id="doc">
+<!--    <div class = "tab">
+	    <div class="web_list">
 		    <h1> Lista dokumentów: </h1>
-
-    		<ul class="lists">
+<tr onclick="document.location='home.asp'" style="cursor:hand">
 	    		{% for doc in all_doc.reverse %}
 		    		<li><a href="{% url 'doc:DocumentDetail' doc.id %}"> {{ doc.doctype }} / {{ doc.number }} <br> {{ doc.client }} <br> {{ doc.date }}</a><li>
     			{% endfor %}
-	    	</ul>
 
     	</div>
     </div>
+-->
+
+    <h2 class="list_title"> Lista dokumentów </h2>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th> NUMER DOKUMENTU </th>
+                <th> DATA DOKUMENTU </th>
+                <th> KLIENT </th>
+                <th> ILOŚĆ </th>
+            </tr>
+        </thead>
+        <tbody>
+         {% for doc in all_doc %}
+                <tr onclick="document.location='{% url 'doc:DocumentDetail' doc.id %}'" class='clickable-row' >
+                    <td class="fcol"> {{ doc.doctype }} / {{ doc.number }} </td>
+                    <td> {{ doc.date }} </td>
+                    <td> {{ doc.client }} </td>
+                    <td> {{ all_q }} </td>
+                </tr>
+         {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

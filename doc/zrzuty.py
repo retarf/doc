@@ -10,3 +10,7 @@
 
 
 'num': num
+
+
+
+<!-- onclick="document.location='{% url 'doc:DocumentDetail' doc.id %}'" -->

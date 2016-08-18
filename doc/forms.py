@@ -18,24 +18,3 @@ class AddCli(ModelForm):
         fields = [ 'code', 'name', 'nip', 'street', 'number', 'city', 'zip_number' ]
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

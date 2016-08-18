@@ -1,18 +1,36 @@
-{% extends 'doc/base.html' %}
+<!-- {% extends 'doc/base.html' %}
 
 
 {% block body %}
+<div class = "tab">
+    <div id="cli">
+        <h1> Lista produktów </h1>
+
+        <ul class="lists">
+
+            {% for product in all_products %}
+				<li><a href="{% url 'doc:productDetail' product.id %}"> {{ product }} </a><li>
+            {% endfor %}
+
+        </ul>
+    </div>
+</div>
+
+{% endblock %}
+
+-->
+
 <div class = "container">
     <h2> Lista produktów </h2>
-    <div class="table table-hover">
-        <div class="ta">
+    <table class="table table-hover">
+        <thead>
             <tr>
                 <th> NAZWA </th>
                 <th> ROCZNIK </th>
                 <th> KOLOR </th>
                 <th> SMAK </th>
             </tr>
-        </div>
+        </thead>
         <tbody>
          {% for product in all_products %}
                 <tr class='clickable-row' data-href='{% url 'doc:productDetail' product.id %}'>
@@ -23,7 +41,5 @@
                 </tr>
          {% endfor %}
         </tbody>
-    </div>
+    </table>
 </div>
-
-{% endblock %}

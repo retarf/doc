@@ -94,6 +94,21 @@ tr
     text-align: center;
 }
 
+.fcol
+{
+    padding-left: 20px;
+}
+
+.list_title
+{
+    margin-bottom: 30px;
+}
+
+.clickable-row
+{
+    cursor: pointer;
+}
+
 /*
 
 #doc
@@ -113,7 +128,7 @@ tr
 	margin-right: auto;
 }
 
-.btn
+.btn_kkk
 {
     display: block;
     line-height: 58px;

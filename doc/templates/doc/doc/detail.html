@@ -7,7 +7,28 @@
 	<h3> Data dokumentu: {{ doc.date }} </h3>
 	<br>
 	<br>
-	<h3> <stoong> Klient: </stoong> {{ doc.client }}
+	<h3> <stoong> Klient: </stoong> {{ doc.client }} </h3>
+
+	<table class="table table-hover">
+        <thead>
+            <tr>
+                <th> NAZWA </th>
+                <th> ILOŚĆ </th>
+                <th> CENA </th>
+                <th> WARTOŚĆ </th>
+            </tr>
+        </thead>
+        <tbody>
+         {% for inc in all_inc %}
+                <tr class='clickable-row' >
+                    <td class="fcol"> {{ inc.product.name }} </td>
+                    <td> {{ inc.quantity }} </td>
+                    <td> {{ inc.price }} </td>
+                    <td> {{ inc.value }} </td>
+                </tr>
+         {% endfor %}
+        </tbody>
+    </table>
 </div>
 <br>
 <br>

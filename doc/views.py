@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Doc, Client, Product
+from .models import Doc, Client, Product, income
 from .forms import Adddoc
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
@@ -27,7 +27,12 @@ def DocumentDetail(request, doc_id):
     except Doc.DoesNotExist:
         raise Http404("Document does not exist")
 
-    return render(request, 'doc/doc/detail.html', {'doc': doc})
+    all_inc = income.objects.filter(docum_id=doc_id)
+
+    for i in all_inc:
+        q =+ i.quantity
+
+    return render(request, 'doc/doc/detail.html', {'doc': doc, "all_inc": all_inc, 'all_q': q})
 
 class DocCreate(CreateView):
     model = Doc
