@@ -82,25 +82,23 @@ class Doc(models.Model):
             return " " + self.doctype + " / " + str(self.number)
 
 
+
 class income(models.Model):
     docum = ForeignKey(Doc, on_delete=models.CASCADE)
     product = ForeignKey(Product, on_delete=models.CASCADE)
     quantity = FloatField()
     price = FloatField()
-    value = FloatField()
+
+
+    def count_value(self):
+        ''' self.value = self.price * self.quantity '''
+        return self.price * self.quantity
+
+    value = FloatField(default=count_value)
 
     def __str__(self):
         return str(self.docum) + " operacja nr " + str(self.id)
-
-    '''
-    def valueCalc(price, quantity):
-        val = price*quantity
-        return val
-
-
-    value = valueCalc(price, quantity)
-    '''
-
+'''
 class expenditure(models.Model):
 	number = ForeignKey(Doc, on_delete=models.CASCADE)
 	product = ForeignKey(Product, on_delete=models.CASCADE)
@@ -108,3 +106,4 @@ class expenditure(models.Model):
 	price = FloatField()
 	value = FloatField()
 
+'''

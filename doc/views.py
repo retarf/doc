@@ -11,6 +11,7 @@ all_clients = Client.objects.order_by('code').all()
 all_products = Product.objects.order_by('name').all()
 
 
+
 ### General section ###
 
 def index(request):
@@ -29,10 +30,20 @@ def DocumentDetail(request, doc_id):
 
     all_inc = income.objects.filter(docum_id=doc_id)
 
-    for i in all_inc:
-        q =+ i.quantity
+    # quantity sum calculation (var q)
+    q = 0
 
-    return render(request, 'doc/doc/detail.html', {'doc': doc, "all_inc": all_inc, 'all_q': q})
+    for i in all_inc:
+        q = q + i.quantity
+
+    # valume sum calculation (var v)
+    v = 0
+
+    for i in all_inc:
+        v = v + i.value
+
+    return render(request, 'doc/doc/detail.html', {'doc': doc, "all_inc": all_inc, 'quantity_sum': q, 'valume_sum': v})
+
 
 class DocCreate(CreateView):
     model = Doc

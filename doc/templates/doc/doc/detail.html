@@ -1,39 +1,60 @@
 {% extends 'doc/base.html' %}
 
 {% block body %}
-<div>
-	<h3> Numer dokumentu: {{ doc.doctype }} / {{ doc.number }} </h3>
-	<br>
-	<h3> Data dokumentu: {{ doc.date }} </h3>
-	<br>
-	<br>
-	<h3> <stoong> Klient: </stoong> {{ doc.client }} </h3>
+    <div class="topbtns">
+        <a href="#" class="btn btn-success topbtn"> POPRZEDNI </a>
+        <a href="#" class="btn btn-success topbtn"> NASTĘPNY </a>
+    </div>
 
-	<table class="table table-hover">
-        <thead>
-            <tr>
-                <th> NAZWA </th>
-                <th> ILOŚĆ </th>
-                <th> CENA </th>
-                <th> WARTOŚĆ </th>
+    <div class="maintab">
+        <table class="table">
+            <tr class="info">
+                <th> NUMER DOKUMENTU: </th>
+                <td> {{ doc.doctype }} / {{ doc.number }} </td>
             </tr>
-        </thead>
-        <tbody>
-         {% for inc in all_inc %}
-                <tr class='clickable-row' >
-                    <td class="fcol"> {{ inc.product.name }} </td>
-                    <td> {{ inc.quantity }} </td>
-                    <td> {{ inc.price }} </td>
-                    <td> {{ inc.value }} </td>
+            <tr class="info">
+                <th> DATA DOKUMENTU: </th>
+                <td> {{ doc.date }} </td>
+            </tr>
+            <tr class="info">
+                <th> KLIENT: </th>
+                <td> {{ doc.client.name }} </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="tab">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th> NAZWA </th>
+                    <th> ILOŚĆ </th>
+                    <th> CENA </th>
+                    <th> WARTOŚĆ </th>
                 </tr>
-         {% endfor %}
-        </tbody>
-    </table>
-</div>
+            </thead>
+            <tbody>
+             {% for inc in all_inc %}
+                    <tr class='clickable-row' >
+                        <td class="fcol"> {{ inc.product.name }} </td>
+                        <td> {{ inc.quantity }} </td>
+                        <td> {{ inc.price }} </td>
+                        <td> {{ inc.value }} </td>
+                    </tr>
+             {% endfor %}
+                    <tr>
+                        <td></td>
+                        <td><strong> SUMA: </strong></td>
+                        <td><strong> {{ quantity_sum }} </strong></td>
+                        <td><strong> {{ valume_sum}} </strong></td>
+                    </tr>
+            </tbody>
+        </table>
+    </div>
 <br>
 <br>
 <form action="{% url 'doc:documents' %}">
-	<button class='btn back' type="submit"> POWRÓT </button>
+	<button class='btn btn-success' type="submit"> POWRÓT </button>
 </form>
 
 {% endblock %}
