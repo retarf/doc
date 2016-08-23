@@ -97,7 +97,9 @@ tr
 
 .list_title
 {
-    margin-bottom: 30px;
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .clickable-row

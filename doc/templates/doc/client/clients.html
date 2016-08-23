@@ -2,19 +2,31 @@
 
 
 {% block body %}
-<div class = "tab">
-    <div id="cli">
-        <h1> Lista klientów </h1>
 
-        <ul class="lists">
+    <div class = "tab">
 
-            {% for client in all_clients %}
-				<li><a href="{% url 'doc:ClientDetail' client.id %}"> {{ client }} </a><li>
-            {% endfor %}
+        <h2 class="list_title"> KLIENCI </h2>
 
-        </ul>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th> NAZWA KLIENTA </th>
+                    <th> ADRES </th>
+                    <th> NIP </th>
+                </tr>
+            </thead>
+            <tbody>
+             {% for client in all_clients %}
+                    <tr onclick="document.location='{% url 'doc:ClientDetail' client.id %}'" class='clickable-row' >
+                        <td class="fcol"> {{ client.name }} </td>
+                        <td> {{ client.street }}, {{ client.zip_number }}, {{ client.city }} </td>
+                        <td> {{ client.nip }} </td>
+                    </tr>
+             {% endfor %}
+            </tbody>
+        </table>
+
     </div>
-</div>
 
 {% endblock %}
 

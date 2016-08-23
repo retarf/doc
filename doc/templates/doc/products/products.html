@@ -2,28 +2,32 @@
 
 
 {% block body %}
-<div class = "container">
-    <h2> Lista produktów </h2>
-    <div class="table table-hover">
-        <div class="ta">
-            <tr>
-                <th> NAZWA </th>
-                <th> ROCZNIK </th>
-                <th> KOLOR </th>
-                <th> SMAK </th>
-            </tr>
-        </div>
-        <tbody>
-         {% for product in all_products %}
-                <tr class='clickable-row' data-href='{% url 'doc:productDetail' product.id %}'>
-                    <td> {{ product.name }} </td>
-                    <td> {{ product.year }} </td>
-                    <td> {{ product.color }} </td>
-                    <td> {{ product.dryness }} </td>
+
+    <div class = "tab">
+
+        <h2 class="list_title"> PRODUKTY </h2>
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th> NAZWA </th>
+                    <th> ROCZNIK </th>
+                    <th> KOLOR </th>
+                    <th> SMAK </th>
                 </tr>
-         {% endfor %}
-        </tbody>
+            </thead>
+            <tbody>
+                 {% for product in all_products %}
+                        <tr class='clickable-row' data-href='{% url 'doc:productDetail' product.id %}'>
+                            <td> {{ product.name }} </td>
+                            <td> {{ product.year }} </td>
+                            <td> {{ product.color }} </td>
+                            <td> {{ product.dryness }} </td>
+                        </tr>
+                 {% endfor %}
+            </tbody>
+        </table>
+
     </div>
-</div>
 
 {% endblock %}

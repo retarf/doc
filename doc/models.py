@@ -10,6 +10,10 @@ from django.forms import ModelForm
 
 from django.core.urlresolvers import reverse
 
+from django.db.models.signals import pre_save
+
+from django.dispatch import receiver
+
 # Create your models here.
 
 class Client(models.Model):
@@ -81,23 +85,17 @@ class Doc(models.Model):
         else:
             return " " + self.doctype + " / " + str(self.number)
 
-
-
 class income(models.Model):
     docum = ForeignKey(Doc, on_delete=models.CASCADE)
     product = ForeignKey(Product, on_delete=models.CASCADE)
     quantity = FloatField()
     price = FloatField()
-
-
-    def count_value(self):
-        ''' self.value = self.price * self.quantity '''
-        return self.price * self.quantity
-
-    value = FloatField(default=count_value)
+    value = FloatField(null=True, blank=True)
 
     def __str__(self):
         return str(self.docum) + " operacja nr " + str(self.id)
+
+
 '''
 class expenditure(models.Model):
 	number = ForeignKey(Doc, on_delete=models.CASCADE)

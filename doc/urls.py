@@ -11,7 +11,9 @@ urlpatterns = [
     url(r'^doc/(?P<doc_id>[0-9]+)/$', views.DocumentDetail, name = 'DocumentDetail'),
     url(r'^doc/$', views.documents, name = 'documents'),
     # add_doc
-    url(r'^doc/add/$', views.DocCreate.as_view(), name = 'doc-add'),
+    # url(r'^doc/add/$', views.DocCreate.as_view(), name = 'doc-add'),
+    url(r'^doc/income_form/$', views.incomeCreate.as_view(), name = 'income_form'),
+    url(r'^doc_form/$', views.DocCreate.as_view(), name = 'doc-add'),
 
     ### Clients section ###
     url(r'^client/$', views.clients, name = 'clients'),

@@ -6,10 +6,9 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 # Create your views here.
 
-all_doc = Doc.objects.order_by('number').all()
+all_doc = Doc.objects.order_by('number').all().reverse()
 all_clients = Client.objects.order_by('code').all()
 all_products = Product.objects.order_by('name').all()
-
 
 
 ### General section ###
@@ -48,6 +47,10 @@ def DocumentDetail(request, doc_id):
 class DocCreate(CreateView):
     model = Doc
     fields = ['doctype', 'number', 'date', 'client' ]
+
+class incomeCreate(CreateView):
+    model = income
+    fields = ['docum', 'product', 'quantity', 'price', 'value']
 
 ### Clients section ###
 
