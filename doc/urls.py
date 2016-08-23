@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^doc/$', views.documents, name = 'documents'),
     # add_doc
     # url(r'^doc/add/$', views.DocCreate.as_view(), name = 'doc-add'),
-    url(r'^doc/income_form/$', views.incomeCreate.as_view(), name = 'income_form'),
+    url(r'^income_form/$', views.incomeCreate.as_view(), name = 'income_form'),
     url(r'^doc_form/$', views.DocCreate.as_view(), name = 'doc-add'),
 
     ### Clients section ###
@@ -22,5 +22,5 @@ urlpatterns = [
     ### Products section ###
 
     url(r'^products/$', views.products, name='products'),
-url(r'^products/(?P<product_id>[0-9]+)/$', views.productDetail, name = 'productDetail'),
+    url(r'^products/(?P<product_id>[0-9]+)/$', views.productDetail, name = 'productDetail'),
 ]

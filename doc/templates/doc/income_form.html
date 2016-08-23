@@ -1,0 +1,44 @@
+{% extends 'doc/base.html' %}
+
+{% block body %}
+    <div class="topbtns">
+        <a href="#" class="btn btn-success topbtn"> POPRZEDNI </a>
+        <a href="#" class="btn btn-success topbtn"> NASTĘPNY </a>
+    </div>
+
+<form action="" method="post" enctype="multipart/form-data" >
+
+    {% csrf_token %}
+    {% for field in form %}
+
+        {{ field.error }}
+        <label> {{ field.label_tag }} </label>
+        <div> {{ field }} </div>
+        <br>
+
+    {% endfor %}
+
+
+	<button class='btn btn-success' type="submit"> POWRÓT </button>
+</form>
+
+<script>
+    function val() {
+        quantity = document.getElementById('id_quantity').value;
+        price = document.getElementById('id_price').value;
+        document.getElementById('id_value').value = quantity * price;
+    };
+
+    document.getElementById('id_quantity').addEventListener('onchange', val());
+    document.getElementById('id_price').addEventListener('onchange', val());
+
+    /*
+    document.addEventListener("DOMContentLoaded", function()
+    {
+        document.getElementById('id_quantity').addEventListener('onchange', val());
+        document.getElementById('id_price').addEventListener('onchange', val());
+    });
+    */
+</script>
+
+{% endblock %}

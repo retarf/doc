@@ -14,3 +14,12 @@
 
 
 <!-- onclick="document.location='{% url 'doc:DocumentDetail' doc.id %}'" -->
+
+
+    # income_form.html
+    < !-- { %
+    for field in form %}
+
+    {{field.error}}
+    < label > {{field.label_tag}} < / label >
+    < div > {{field}} < / div >
