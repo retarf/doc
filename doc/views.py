@@ -1,8 +1,9 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponse, Http404
 from .models import Doc, Client, Product, income
-from .forms import Adddoc
+from .forms import Adddoc, IncomeForm
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+
 
 # Create your views here.
 
@@ -21,11 +22,13 @@ def index(request):
 def documents(request):
     return render(request, 'doc/doc/documents.html', { 'all_doc': all_doc })
 
-def DocumentDetail(request, doc_id):
-    try:
-        doc = Doc.objects.get(pk=doc_id)
-    except Doc.DoesNotExist:
-        raise Http404("Document does not exist")
+def all_inc_func(doc_id):
+    all_inc = income.objects.filter(docum_id=doc_id)
+
+    return {'all_inc': all_inc}
+
+
+def doc_calculation(doc_id):
 
     all_inc = income.objects.filter(docum_id=doc_id)
 
@@ -38,15 +41,65 @@ def DocumentDetail(request, doc_id):
     # valume sum calculation (var v)
     v = 0
 
-    for i in all_inc:
-        v = v + i.value
+    return {'q': q, 'v': v}
 
-    return render(request, 'doc/doc/detail.html', {'doc': doc, "all_inc": all_inc, 'quantity_sum': q, 'valume_sum': v})
 
+def DocumentDetail(request, doc_id):
+
+    try:
+        doc = Doc.objects.get(pk=doc_id)
+        q = doc_calculation(doc_id).q
+        v = doc_calculation(doc_id).v
+
+    except Doc.DoesNotExist:
+        raise Http404("Document does not exist")
+
+    return render(request, 'doc/doc/detail.html', {'doc': doc, 'all_inc': all_inc, 'quantity_sum': q, 'valume_sum': v, 'dec': dec, 'inc': inc})
+
+'''
+    #if not doc.DoesNotExist:
+
+    else:
+
+        q = doc_calculation(doc_id).q
+        v = doc_calculation(doc_id).v
+
+        # calkulation for "poprzedni" and "nastepny" button
+
+        doc_id = int(doc_id)
+
+        dec = doc_id - 1
+
+        try:
+            dec = Doc.objects.get(pk = dec)
+        except Doc.DoesNotExist:
+            dec = Doc.objects.order_by('id').first()
+
+        inc = doc_id + 1
+
+        try:
+            inc = Doc.objects.get(pk = inc)
+        except Doc.DoesNotExist:
+            if Doc.objects.order_by('id').last().id == doc_id:
+                inc = Doc.objects.order_by('id').last()
+            else:
+                try:
+                    inc = inc + 1
+                except inc >= doc_id:
+                    pass
+
+
+'''
 
 class DocCreate(CreateView):
     model = Doc
     fields = ['doctype', 'number', 'date', 'client' ]
+
+
+
+    def idreturn(self):
+        doc_id = self.id
+        return doc_id
 
 class incomeCreate(CreateView):
     model = income
@@ -78,7 +131,4 @@ def productDetail(request, product_id):
         raise Http404("Product does not exist")
 
     return render(request, 'doc/products/product_detail.html', { 'product': product })
-
-
-
 

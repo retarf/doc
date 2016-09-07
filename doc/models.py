@@ -74,8 +74,17 @@ class Doc(models.Model):
 
     client=ForeignKey(Client, on_delete=models.CASCADE)
 
+    def get_dec_url(self):
+        dec = self.id - 1
+        return reverse('doc:DocumentDetail', kwargs={'doc_id': dec})
+
+    def get_inc_url(self):
+        inc = self.id + 1
+        return reverse('doc:DocumentDetail', kwargs={'doc_id': inc})
+
     def get_absolute_url(self):
-        return reverse('doc:detail', kwargs={ 'doc_id': self.id })
+        return reverse('doc:DocumentDetail', kwargs={ 'doc_id': self.id })
+        # return reverse('doc:detail', kwargs={ 'doc_id': self.id })
 
     def __str__(self):
         if self.number < 10:

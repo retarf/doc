@@ -29,16 +29,11 @@
         document.getElementById('id_value').value = quantity * price;
     };
 
-    document.getElementById('id_quantity').addEventListener('onchange', val());
-    document.getElementById('id_price').addEventListener('onchange', val());
+    document.getElementById('id_quantity').addEventListener("focus", val(), true);
+    document.getElementById('id_price').addEventListener("focus", val(), true);
+    document.getElementById('id_quantity').addEventListener("blur", val(), true);
+    document.getElementById('id_price').addEventListener("blur", val(), true);
 
-    /*
-    document.addEventListener("DOMContentLoaded", function()
-    {
-        document.getElementById('id_quantity').addEventListener('onchange', val());
-        document.getElementById('id_price').addEventListener('onchange', val());
-    });
-    */
 </script>
 
 {% endblock %}

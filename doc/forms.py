@@ -19,3 +19,9 @@ class IncomeForm(ModelForm):
     class Meta:
         model = income
         fields = ['docum', 'product', 'quantity', 'price', 'value']
+
+        def docum_id(doc_id):
+            docum = doc_id
+
+
+

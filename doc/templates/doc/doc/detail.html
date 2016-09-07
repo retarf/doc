@@ -1,10 +1,27 @@
 {% extends 'doc/base.html' %}
 
 {% block body %}
+<script>
+    document.addEventListener("DOMContentLoaded", function()
+    {
+        if {{ inc }} == 'xxx'
+        {
+            document.getElementById('nast').removeAttribute('href')
+        }
+
+    })
+
+
+</script>
+{% url 'doc:DocumentDetail' doc.id %}
+
     <div class="topbtns">
-        <a href="#" class="btn btn-success topbtn"> POPRZEDNI </a>
-        <a href="#" class="btn btn-success topbtn"> NASTĘPNY </a>
+        <a href="{% url 'doc:DocumentDetail' dec.id %}" class="btn btn-success topbtn"> POPRZEDNI </a>
+        <a id="nast" href="{% url 'doc:DocumentDetail' inc.id %}" class="btn btn-success topbtn"> NASTĘPNY </a>
     </div>
+
+    <p>{{ dec }}</p>
+    <p>{{ inc }}</p>
 
     <div class="maintab">
         <table class="table">
